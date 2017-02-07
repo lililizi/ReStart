@@ -25,7 +25,7 @@ import java.io.IOException;
 @EnableTransactionManagement
 public class DataConfig  {
     /**
-     * 使用C3p0连接池
+     * 使用C3p0连接池123
      * @return
      */
     @Bean
