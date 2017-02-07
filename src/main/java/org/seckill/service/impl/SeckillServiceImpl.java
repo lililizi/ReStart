@@ -29,7 +29,7 @@ import java.util.List;
 @Service
 public class SeckillServiceImpl implements SeckillService {
 
-    private final Logger logger= LoggerFactory.getLogger(this.getClass());
+    private final Logger logger=  LoggerFactory.getLogger(this.getClass());
     @Autowired
     private SecKillDaoMapper secKillDaoMapper;
     @Autowired
