@@ -57,12 +57,6 @@ public class DataConfig  {
         bean.setDataSource(dataSource());//注入连接池
       bean.setConfigLocation(new ClassPathResource("/mybatis-config.xml"));//配置mybatis全局配置文件
         bean.setTypeAliasesPackage("org.seckill.domain");
-        /*// 设置查找器
-        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        // 自动扫描mybatis文件
-        bean.setMapperLocations(resolver.getResources("classpath:org/seckill/dao*//*.xml"));*/
-        //扫描mapper.xml
-       // bean.setMapperLocations(new ClassPathResource[]{new ClassPathResource("classpath:mapper/*.xml")});
         return bean;
     }
     @Bean
