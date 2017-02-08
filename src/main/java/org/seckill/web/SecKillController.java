@@ -73,7 +73,6 @@ public class SecKillController {
     @ResponseBody
     public SeckillResult<SeckillExecution> execution(@PathVariable("seckillId")Long seckillId,@PathVariable("md5")String md5,
                                                      @CookieValue(value = "killphone",required = false) Long phone){
-
         if(phone==null)
             return new SeckillResult<SeckillExecution>(false,"未注册");
         SeckillResult<Exposer> result;
