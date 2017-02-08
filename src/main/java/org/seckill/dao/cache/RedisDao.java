@@ -15,8 +15,8 @@ import redis.clients.jedis.JedisPool;
  * Created by touch on 2017/2/7.
  */
 public class RedisDao {
- //   private final Logger logger= LoggerFactory.getLogger(this.getClass());
-    private  JedisPool pool=null;
+    private final Logger logger= LoggerFactory.getLogger(this.getClass());
+    private final JedisPool pool;
  private RuntimeSchema<Seckill> schema = RuntimeSchema.createFrom(Seckill.class);
     public RedisDao(String ip ,int port) {
         this.pool=new JedisPool(ip,port);
@@ -41,7 +41,7 @@ public class RedisDao {
                 jedis.close();
             }
         } catch (Exception e) {
-         //   logger.error(e.getMessage(),e);
+            logger.error(e.getMessage(),e);
         }
         return null;
     }
@@ -60,7 +60,7 @@ public class RedisDao {
                 jedis.close();
             }
         } catch (Exception e) {
-         //   logger.error(e.getMessage(),e);
+            logger.error(e.getMessage(),e);
         }
         return null;
     }
