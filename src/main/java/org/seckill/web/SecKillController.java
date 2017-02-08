@@ -54,7 +54,6 @@ public class SecKillController {
         SeckillResult<Exposer> result;
         try{
             Exposer exposer=service.exportSeckillUrl(seckillId);
-            System.out.println("数据"+exposer.toString());
             result=new SeckillResult<Exposer>(true,exposer);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
@@ -79,7 +78,10 @@ public class SecKillController {
             return new SeckillResult<SeckillExecution>(false,"未注册");
         SeckillResult<Exposer> result;
         try {
-            SeckillExecution execution=service.excuteSeckill(seckillId,phone,md5);
+//            SeckillExecution execution=service.excuteSeckill(seckillId,phone,md5);
+            //存储过程掉哦用
+            System.out.println("-----------------------------------------------------------");
+            SeckillExecution execution=service.excuteSeckillPro(seckillId,phone,md5);
             System.out.println("传输数据"+execution.toString());
             return new SeckillResult<SeckillExecution>(true,execution);
         }catch (RepeatKillException e){

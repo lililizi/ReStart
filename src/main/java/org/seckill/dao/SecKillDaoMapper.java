@@ -4,6 +4,7 @@ import org.seckill.domain.Seckill;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by touch on 2016/10/26.
@@ -32,4 +33,10 @@ public interface SecKillDaoMapper {
      * @return
      */
     public List<Seckill> queryAll(int offet,int limit);
+
+    /**
+     * 使用存储过程执行秒杀
+     * @param paramMap
+     */
+    void killbyPro(Map<String,Object> paramMap);
 }

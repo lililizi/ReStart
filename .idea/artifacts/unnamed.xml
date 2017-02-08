@@ -43,6 +43,7 @@
           <element id="library" level="project" name="Maven: org.thymeleaf:thymeleaf:3.0.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.unbescape:unbescape:1.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: taglibs:standard:1.1.2" />
+          <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2" />
         </element>
         <element id="directory" name="classes">
           <element id="module-output" name="ReStart" />
