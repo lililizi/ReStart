@@ -2,6 +2,7 @@ package org.seckill.service.impl;
 
 import org.seckill.dao.SecKillDaoMapper;
 import org.seckill.dao.SuccessKillDaoMapper;
+import org.seckill.dao.cache.RedisDao;
 import org.seckill.domain.Seckill;
 import org.seckill.domain.SuccessSecKill;
 import org.seckill.dto.Exposer;
@@ -34,6 +35,8 @@ public class SeckillServiceImpl implements SeckillService {
     private SecKillDaoMapper secKillDaoMapper;
     @Autowired
     private SuccessKillDaoMapper successKillDaoMapper;
+    @Autowired
+    private RedisDao redisDao;
     //md5盐值字符串，混淆MD5
     public final String slat="cvhqkjbwefohdvhasdfiw*()&^%@$#!";
     public List<Seckill> getSeckillList() {
@@ -46,9 +49,19 @@ public class SeckillServiceImpl implements SeckillService {
     }
 
     public Exposer exportSeckillUrl(long seckillId) {
-        Seckill secKill=secKillDaoMapper.queryById(seckillId);
-        if (secKill==null)
-            return new Exposer(false,seckillId);
+        //优化点:缓存优化
+        /**
+         * 1.search redis
+         * 2.search db
+         */
+        Seckill secKill=redisDao.getSeckill(seckillId);
+        if (secKill==null) {
+            secKill=secKillDaoMapper.queryById(seckillId);
+            if (secKill==null) {
+                return new Exposer(false,seckillId);
+            } else
+                redisDao.putSeckill(secKill);
+        }
         Date start=secKill.getStartTime();
         Date end=secKill.getEndTime();
         Date now=new Date();

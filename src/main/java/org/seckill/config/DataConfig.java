@@ -3,6 +3,7 @@ package org.seckill.config;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.seckill.dao.cache.RedisDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -64,5 +65,12 @@ public class DataConfig  {
         DataSourceTransactionManager transactionManager=new DataSourceTransactionManager();
         transactionManager.setDataSource(dataSource());
         return transactionManager;
+    }
+    @Bean
+    public RedisDao redisDao(){
+        System.out.println("11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
+        RedisDao redisDao= new RedisDao("127.0.0.1",6379);
+        System.out.println("22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222");
+        return redisDao;
     }
 }
