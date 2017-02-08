@@ -80,18 +80,9 @@ public class SecKillController {
         try {
 //            SeckillExecution execution=service.excuteSeckill(seckillId,phone,md5);
             //存储过程掉哦用
-            System.out.println("-----------------------------------------------------------");
             SeckillExecution execution=service.excuteSeckillPro(seckillId,phone,md5);
-            System.out.println("传输数据"+execution.toString());
             return new SeckillResult<SeckillExecution>(true,execution);
-        }catch (RepeatKillException e){
-            SeckillExecution ex=new SeckillExecution(seckillId, SeckillStatEnum.REPEAT_KILL);
-            return new SeckillResult<SeckillExecution>(false,ex);
-        }catch (SeckillClose e){
-            SeckillExecution ex=new SeckillExecution(seckillId, SeckillStatEnum.END);
-            return new SeckillResult<SeckillExecution>(false,ex);
-        }
-        catch (Exception e){
+        } catch (Exception e){
             logger.error(e.getMessage(),e);
             SeckillExecution ex=new SeckillExecution(seckillId, SeckillStatEnum.INNER_ERROR);
             return new SeckillResult<SeckillExecution>(false,ex);
