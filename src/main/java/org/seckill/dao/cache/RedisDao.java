@@ -26,7 +26,7 @@ public class RedisDao {
         try {
             Jedis jedis=pool.getResource();
             try {
-                String key="seckill"+seckillId;
+                String key="seckillId:"+seckillId;
                 //并沒有内部序列化操作
                 //get-》byte【】-》反序列化-》seckill
                 //采用自定義序列化
@@ -50,7 +50,7 @@ public class RedisDao {
         try {
             Jedis jedis=pool.getResource();
             try{
-                String key="seckillId"+seckill.getSeckillId();
+                String key="seckillId:"+seckill.getSeckillId();
                 byte[] bytes= ProtostuffIOUtil.toByteArray(seckill,schema,
                         LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE));
                 int timeout=3600;

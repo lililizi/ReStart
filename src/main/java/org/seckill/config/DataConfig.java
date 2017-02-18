@@ -6,7 +6,6 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.seckill.dao.cache.RedisDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -21,12 +20,11 @@ import java.io.IOException;
  * @Date: Created in 14:58 2016/10/26.
  */
 @Configuration
-//@PropertySource("jdbc.properties")
 @MapperScan("org.seckill.dao")
 @EnableTransactionManagement
 public class DataConfig  {
     /**
-     * 使用C3p0连接池123
+     * 使用C3p0连接池
      * @return
      */
     @Bean
